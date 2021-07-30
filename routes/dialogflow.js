@@ -6,8 +6,7 @@ const DialogflowHelper = require('../controllers/dialogflow_helper');
 
 router.post('/intent-fulfillment', function(req, res, next) {
   const {body: {queryResult: {parameters, intent}}} = req;
-
-  console.log(parameters, intent)
+  console.log(JSON.stringify(intent), JSON.stringify(parameters));
 
   const intentName = DialogflowHelper.getIntentName(intent.displayName);
 
@@ -17,6 +16,7 @@ router.post('/intent-fulfillment', function(req, res, next) {
 
   controller.handleIntentFulfillment(req)
     .then(result => {
+      console.log(JSON.stringify(result));
       res.status(200).json(result).end();
     });
 });
