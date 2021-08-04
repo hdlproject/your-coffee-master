@@ -17,10 +17,13 @@
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
     "dotenv": "~10.0.0",
-    "nodemon": "~2.0.12"
+    "nodemon": "~2.0.12",
+    "sequelize": "~6.6.5",
+    "pg": "~8.7.1"
   },
   "devDependencies": {
     "eslint": "^7.31.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "sequelize-cli": "~6.2.0"
   }
 }
