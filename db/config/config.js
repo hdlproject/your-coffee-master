@@ -1,5 +1,5 @@
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+require('dotenv').config({path: path.join(__dirname, '../../.env')});
 
 module.exports = {
   development: {
@@ -8,6 +8,15 @@ module.exports = {
     database: process.env.POSTGRESQL_DB,
     host: process.env.POSTGRESQL_HOST,
     port: process.env.POSTGRESQL_PORT,
+    dialect: 'postgres',
+    dialectOptions: {
+      bigNumberStrings: true,
+    },
+    seederStorage: 'sequelize',
+    sslmode: 'disable',
+  },
+  heroku: {
+    use_env_variable: process.env.DATABASE_URL,
     dialect: 'postgres',
     dialectOptions: {
       bigNumberStrings: true,
