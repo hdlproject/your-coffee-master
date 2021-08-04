@@ -1,12 +1,10 @@
-const DialogflowService = require('../services/dialogflow/factory');
-
 class DialogflowController {
   constructor(dialogflowService) {
     this.dialogflowService = dialogflowService;
   }
 
   async handleIntentFulfillment(req) {
-    const response = this.dialogflowService.getResponse();
+    const response = await this.dialogflowService.getResponse();
 
     return {
       'fulfillmentMessages': [

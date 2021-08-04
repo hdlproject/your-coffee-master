@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
     sequelize: sequelize,
     tableName: 'coffee_beans_types',
     underscored: true,
+    createdAt: false,
+    updatedAt: false,
+    deletedAt: false,
   });
 
   return CoffeeBeansType;

@@ -3,6 +3,7 @@ const router = express.Router();
 const DialogflowController = require('../controllers/dialogflow');
 const DialogflowService = require('../services/dialogflow/factory');
 const DialogflowHelper = require('../controllers/dialogflow_helper');
+const CoffeeBeansRepo = require('../models/repositories/coffee_beans');
 
 router.post('/intent-fulfillment', function(req, res, next) {
   const {body: {queryResult: {parameters, intent}}} = req;
@@ -10,7 +11,12 @@ router.post('/intent-fulfillment', function(req, res, next) {
 
   const intentName = DialogflowHelper.getIntentName(intent.displayName);
 
-  const service = DialogflowService.create(intentName, parameters);
+  const coffeeBeansRepo = new CoffeeBeansRepo();
+
+  const service = DialogflowService.create({
+    intentName,
+    parameters,
+  }, {coffeeBeansRepo});
 
   const controller = new DialogflowController(service);
 
